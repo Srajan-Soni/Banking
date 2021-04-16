@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block mainblock %}
+
+    <div class="jumbotron mt-5">
+        <div class="navi mt-3">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item mt-2"><a href="/app/index">Home</a></li>
+                <li class="breadcrumb-item"><a href="/app/showuser">Users</a></li>
+                <li class="breadcrumb-item">Payment</li>
+              </ul>
+        </div>
+        <h2 class="text-success">Payment</h2>
+        
+        <table class="table table-stripped mt-3 dtbl">
+            <tr class="text-dark">
+                <th>Name: </th>
+                <td>{{me.name}}</td>
+            </tr>
+            <tr><th>Email: </th>
+                <td>{{me.email}}</td></tr>
+            <tr>    <th>Account Type: </th>
+                <td>{{me.acc_type}}</td></tr>
+            <tr><th>Total Balance: </th>
+                <td>{{me.balance}}</td></tr>
+                
+            </tr>
+        </table>
+
+        <br>
+        <div class="sendto mt-4">
+            <form method="POST" action="/app/sendmoney/">
+                {% csrf_token %}
+        <select name="user" class="custom-select" id="users">
+            <option value="0">Select User</option>
+            {% for tu in touser %}
+                <option value="{{tu.id}}">{{tu.name}} - {{tu.email}}</option>
+            {% endfor %}    
+
+        </select>
+        <br><br>
+            <div class="form-group">
+                <!-- <lable for="money">Transfer Money :  </lable> -->
+                <input type="text" id="money" name="money" pattern="(?=.*\d){}" maxlength="9" title="Enter Correct Amount" class="form-control" placeholder="Enter Money" required />
+               
+                <!-- <div class="valid-feedback">valid</div>
+                <div class="invalid-feedback">Invalid Input</div> -->
+                <input type="hidden" name="sender" value="{{me.id}}">
+            </div>
+            <input type="submit" class="btn btn-danger mt-2" value="Pay" data-toggle="modal" data-target="#payModal" >
+         </form>
+    </div>
+
+     <!-- The Modal -->
+  <div class="modal" id="payModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Confirm Payment</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+            <h4 class="text-dark font-weight-bold">Do you want to confirm this payment ? </h4>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success confirm float-left" data-dismiss="modal">Confirm</button>
+          <button type="button" class="btn btn-danger confirm float-right" data-dismiss="modal">Cancel</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+       
+</div>
+
+{% endblock %}

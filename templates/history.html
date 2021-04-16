@@ -1,0 +1,81 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block mainblock %}
+
+    
+
+    <div class="navi mt-3">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/app/index">Home</a></li>
+            
+            <li class="breadcrumb-item-active">Transactions</li>
+          </ul>
+    </div>
+
+    <h1 class="text-secondary mt-2" >Transaction History</h1>
+    <div class="report">
+      {% if transactions %}
+    <table class="table table-hover table-border tbl mt-5">
+      <thead class="thead thead-dark">
+        <tr>
+            <th>Payment<br> no.</th>
+            <th>Send From</th>
+            <th>Send To</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Transaction ID</th>
+            <th>Transaction Time</th>
+            <th>Action</th>
+         </tr>
+         </thead>
+         {% for t in transactions %}
+         <tr class="text-white">
+            <td>{{t.id}}</td>
+            <td>{{t.From}}</td>
+            <td>{{t.to}}</td>
+            <td>{{t.amount}}</td>
+            <td>{{t.status}}</td>
+            <td>{{t.t_id}}</td>
+           <td>{{t.time}}</td>
+           <td><a href="/app/del?id={{t.id}}" data-toggle="tooltip" title="Delete" ><img src="{% static 'images/delete-sign.png' %}" class="act-img" ></a>&nbsp;
+            <a href="/app/repeat?id={{t.id}}" data-toggle="tooltip" title="Repeat"><img src="{% static 'images/repeat.png'  %}" class="act-img" ></a>
+            </td>
+           
+            
+         </tr>
+         <tr></tr>
+         {% endfor %}
+
+    </table>
+    {% else %}
+    <h4 class="text-danger">No records ...........</h4>
+    </div>
+    {% endif %}
+
+   <div class="pagination page">
+    {% if is_paginated %}
+    
+      {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">&laquo;</a> 
+      {% else %}
+        <a href="#"><span>&laquo;</span> </a>
+      {% endif %}
+      {% for i in paginator.page_range %}
+        {% if page_obj.number == i %}
+          <a href="#"><span>{{ i }}</span> </a>
+        {% else %}
+           <a href="?page={{ i }}">{{ i }}</a> 
+        {% endif %}
+      {% endfor %}
+      {% if page_obj.has_next %}
+         <a href="?page={{ page_obj.next_page_number }}">&raquo;</a> 
+      {% else %}
+        <span>&raquo;</span> 
+      {% endif %}
+    
+  {% endif %}
+   </div>
+    
+{% endblock %}

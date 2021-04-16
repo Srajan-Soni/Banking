@@ -1,0 +1,51 @@
+
+{% extends 'base.html' %}
+
+{% block mainblock %}
+{% load static %}
+    <div class="alert alert-success status"><h4>Money Sent Successfully</h4>
+        <!-- <img src="{% static 'images/tick.png' %}" height="40px" width="40px"> -->
+    
+    </div>
+
+    <div class="report">
+       
+        <h2 class="text-warning" >Transaction report</h2>
+        <table class="table table-stripped mt-3">
+           
+            <tr>
+                <th>Payment ID</th>
+                <td>{{request.session.tid}}</td>
+            </tr>
+
+            <tr>
+                <th>Send to</th>
+                <td>{{request.session.to}}</td>
+            </tr>
+            <tr>
+                <th>Send from</th>
+                <td>{{request.session.from}}</td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td>{{request.session.amount}}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{request.session.status}}</td>
+            </tr>
+            <tr>
+                <th>Transaction time</th>
+                <td>{{request.session.time}}</td>
+            </tr>
+            
+        </table>
+    </div>
+    <div class="btn-group ml-5 mt-2">
+        <a href="/app/index" class="btn btn-dark">Back to home</a>
+        <a href="/app/showuser" class="btn btn-info ml-4">Another Payment</a>
+        <a href="/app/history" class="btn btn-warning ml-4">View All Transactions</a>
+
+    </div>
+
+{% endblock %}

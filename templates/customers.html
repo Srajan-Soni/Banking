@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block mainblock %}
+
+<h1 class="text-danger text-center mt-5">All Users</h1>
+<table class="table table-hover table-border tbl">
+    
+    <thead class="thead thead-dark">
+    <tr>
+        <th>Sno.</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Account type</th>
+        <th>Balance</th>
+        
+     </tr>
+     {% for a in customers %}
+     <tr class="text-white">
+        <td>{{a.id}}</td>
+        <td><a href="/app/profile?name={{a.name}}" class="text-white" >{{a.name}}</a></td>
+        <td>{{a.email}}</td>
+        <td>{{a.acc_type}}</td>
+        <td>{{a.balance}}</td>
+      
+     </tr>
+     {% endfor %}
+
+
+
+</table>
+
+
+
+{% endblock %}
+

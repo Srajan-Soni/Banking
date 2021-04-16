@@ -1,0 +1,243 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+body{
+  background-image: url('../images/royal-mint.jpg');
+  background-repeat: no-repeat;
+  background-size: 350vh;
+  background-position: top;
+
+}
+.container{
+  
+}
+
+#header{
+    height: 80px;
+    width: 100%;
+    /* border: 1px solid black; */
+    background-color: dimgrey;
+    position: relative;
+}
+
+a{
+  text-decoration: none;
+}
+
+/*    Title       */
+
+.glow{
+  font-size: 50px;
+  color: white;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+
+}
+@-webkit-keyframes glow{
+   from {
+text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e4a828, 0 0 40px #ffe659, 0 0 50px #fdde51, 0 0 60px #e60073, 0 0 70px #e60073;
+}
+
+to {
+text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+}
+}
+
+.left-cont{
+    float: left;
+    height: 60px;
+    width: 50%;
+    position: relative;
+}
+/* .right-cont{
+  float: right;
+  height: 60px;
+  width: 30%;
+  position: absolute;
+}
+.right-cont{
+  left: 90%;
+} */
+
+.shift-r{
+  position: absolute;
+  left: 70%;
+  top: 35px;
+}
+.shift-r2{
+  position: absolute;
+  left: 80%;
+  top: 35px;
+}
+.shift-r3{
+  position: absolute;
+  left: 90%;
+  top: 35px;
+}
+.ttl{
+    position: absolute;
+    left: 80px;
+    top: 10px;
+}
+
+#footer{
+    background-color: dimgray;
+    height: 150px;
+    width: 100%;
+}
+
+#main_body{
+    height: 900px;
+    width: 100%;
+    
+}
+
+.tbl{
+    margin-top: 10%;
+}
+
+.tbl th,tr{
+  color: #ddd;
+  font-size: large;
+  font-weight: 400;
+}
+.tbl th{
+  background-color: black;
+
+}
+.tbl tr:hover{
+  /* text-shadow: 0 0 10px white; */
+  
+  color: #ddd;
+  background-color: black;
+}
+
+.dtbl tr{
+  color: black;
+}
+
+.welc{
+    margin-top: 50px;
+}
+
+.vbtn{
+    margin: 0px auto;
+    margin-left: 45%;
+    margin-top: 20px;
+}
+
+#money{
+    width: 50%;
+}
+
+/* Transactions */
+
+
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+    background-color: #eee;
+  }
+  ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+  }
+  ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+  }
+  ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+  }
+  ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+  }
+
+  .status{
+      margin-top: 30px;
+  }
+
+  /*        History             */
+
+  .act-img{
+      height: 30px;
+      width: 30px;
+  }
+
+.report{
+    margin-top: 20px;
+}
+
+.page{
+    /* margin-top: ; */
+    
+    text-align: center;
+    display: inline-block;
+}
+
+
+.pagination {
+    display: inline-block;
+    text-align: center;
+    margin-left: 40%;
+  }
+  
+.pagination a{
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+  }
+  
+  .pagination a.active {
+    background-color: darkblue;
+    color: white;
+    border: 1px solid skyblue;
+  }
+  
+  .pagination a:hover:not(.active){
+      background-color: #ddd;
+    }
+
+
+    /*     Repeat      */
+
+    #repeat{
+      margin-top: 5%;
+    }
+
+    .paybtns{
+      margin-left: 30px;
+      padding-left: 10px;
+    }
+
+    .profile{
+      width: 60%;
+      margin-left: 20%;
+      height: 500px;
+    }
+
+
+.yourtrans{
+      height: 700px;
+      overflow: auto;
+   }
+
+
+.info{
+  /* text-shadow: -1px 0  white; */
+  font-weight: 400;
+  color:purple;
+}   

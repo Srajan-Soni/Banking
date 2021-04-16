@@ -1,0 +1,85 @@
+
+{% extends 'base.html' %}
+
+{% block mainblock %}
+
+<div class="report jumbotron">
+    <div class="navi mt-3">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item mt-2"><a href="/app/index">Home</a></li>
+            <li class="breadcrumb-item"><a href="/app/history">Transactions</a></li>
+            <li class="breadcrumb-item">Payment</li>
+          </ul>
+    </div>
+    <div id="repeat">
+    <h2 class="text-info mt-2 mb-3">Payment</h2>
+    
+    <table class="table table-stripped mt-5 dtbl">
+       
+        <tr>
+            <th>Payment ID</th>
+            <td>{{pay.t_id}}</td>
+        </tr>
+
+        <tr>
+            <th>Send to</th>
+            <td>{{pay.to}}</td>
+        </tr>
+        <tr>
+            <th>Send from</th>
+            <td>{{pay.From}}</td>
+        </tr>
+        
+        
+    </table>
+    <form action="/app/sendmoney/" method="POST">
+        {% csrf_token %}
+    <div class="form-group">
+        <!-- <lable for="money">Transfer Money :  </lable> -->
+        <input type="text" id="money" name="money" pattern="(?=.*\d){}" maxlength="9" title="Enter Correct Amount" class="form-control" value="{{pay.amount}}" placeholder="Enter Money" required />
+       
+        <!-- <div class="valid-feedback">valid</div>
+        <div class="invalid-feedback">Invalid Input</div> -->
+        <input type="hidden" name="sender" value="{{pay.From}}">
+        <input type="hidden" name="user" value="{{pay.to}}" id="users">
+    </div>
+    <div class="paybtns">
+        <input type="submit" class="btn btn-danger mt-2" value="Pay" data-toggle="modal" data-target="#payModal" >
+    <a href="/app/history" class="btn btn-warning ml-4 mt-2" >Cancel</a>
+    </div>
+ </form>
+
+ </div>
+
+     <!-- The Modal -->
+     <div class="modal" id="payModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+          
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Confirm Payment</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+                <h4 class="text-dark font-weight-bold">Do you want to confirm this payment ? </h4>
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success confirm float-left" data-dismiss="modal">Confirm</button>
+              <button type="button" class="btn btn-danger confirm float-right" data-dismiss="modal">Cancel</button>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+</div>
+
+
+
+
+{% endblock %}

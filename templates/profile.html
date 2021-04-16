@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+
+{% block mainblock %}
+
+
+    <div class="profile jumbotron mt-5">
+       
+        <h2 class="text-warning" >Profile</h2>
+        <table class="table table-stripped mt-3 dtbl">
+            <tr class="text-dark">
+                <th>Name: </th>
+                <td>{{p.name}}</td>
+            </tr>
+            <tr><th>Email: </th>
+                <td>{{p.email}}</td></tr>
+            <tr>    <th>Account Type: </th>
+                <td>{{p.acc_type}}</td></tr>
+            <tr><th>Total Balance: </th>
+                <td>{{p.balance}}</td></tr>
+                
+            </tr>
+        </table>
+    
+    <div class="btn-group ml-5 mt-2">
+        <a href="/app/index" class="btn btn-dark">Back to home</a>
+        <a href="/app/transferto?aid={{p.id}}" class="btn btn-info ml-4">Make Payment</a>
+        <a href="/app/yourtransac?t={{p.name}}" class="btn btn-warning ml-4">View Your Transactions</a>
+
+    </div>
+</div>
+{% endblock %}
+
